@@ -45,6 +45,20 @@ public class RabbitMQSenderServiceImpl implements RabbitMQSenderService {
 
     @Override
     public void sendAndConfirm(String virtualHost, String exchange, String routingKey, String msg) throws Exception {
+        Message msgBody = MessageBuilder.withBody(msg.getBytes(Constants.UTF8_CHARSET))
+                .setContentType(MessageProperties.CONTENT_TYPE_JSON)
+                .setContentEncoding(Constants.UTF8)
+                .build();
 
+        RabbitTemplate tempTemplate = RabbitMQSenderConfig.getRabbitTemplate(virtualHost, true);
+        tempTemplate.setReplyTimeout(0);
+        String id = RabbitRetryCache.generateId();
+
+        try {
+            tempTemplate.convertSendAndReceive(exchange, routingKey, msgBody, new CorrelationData(id));
+        } catch (Exception e) {
+            // 重试 发送消息
+            rabbitRetryCache.add(id, virtualHost,exchange, routingKey, true, msg);
+        }
     }
 }
