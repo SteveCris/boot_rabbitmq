@@ -1,5 +1,6 @@
 package com.ouyue.xiwennews.service.impl;
 
+import com.ouyue.xiwennews.common.dto.PushEvent;
 import com.ouyue.xiwennews.common.exception.BaseException;
 import com.ouyue.xiwennews.common.exception.ExceptionCode;
 import com.ouyue.xiwennews.common.exception.ExceptionLevel;
@@ -32,7 +33,7 @@ public class UserLikeServiceImpl implements UserLikeService {
     }
 
     @Override
-    public void cancelLike(Integer id) {
+    public void cancelLike(String id) {
         //取消点赞的状态
       /* try {
             Integer num= id/0;
@@ -40,5 +41,12 @@ public class UserLikeServiceImpl implements UserLikeService {
            throw new IllegalArgumentFailureException(ExceptionLevel.ERROR, ExceptionCode.DEFAULT_ERROR);
         }*/
         System.out.println(id);
+    }
+
+    @Override
+    public boolean processPushTime(String pushEvent) {
+       /*     Integer num= 1/0;
+            System.out.println(pushEvent);*/
+            return false;
     }
 }

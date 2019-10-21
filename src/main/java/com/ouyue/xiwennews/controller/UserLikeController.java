@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -36,11 +35,11 @@ public class UserLikeController {
 	@ApiOperation(value = "信息")
 	@ResponseBody
 	@RequestMapping(value = "/getUserLikeDto", method = RequestMethod.GET)
-	public BaseResponse<UserLikeDetailV> insertDto(@RequestParam Integer id) {
+	public BaseResponse<UserLikeDetailV> insertDto(@RequestParam String id) {
 		BaseResponse response = new BaseResponse();
-		UserLikeDetailV vo=userLikeService.getUserLikeDetail(id);
+		UserLikeDetailV vo=userLikeService.getUserLikeDetail(Integer.valueOf(id));
 		response.setModel(vo);
-		cancelOrderSender.sendMessage(id,50000);
+	 	cancelOrderSender.sendMessage(id,50000);
 		return response;
 	}
 

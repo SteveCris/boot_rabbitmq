@@ -7,13 +7,13 @@ package com.ouyue.xiwennews.common.model;
  * @create:2019-10-11 10-48
  */
 public class MqDto {
-    private String message;
+    private String msg;
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

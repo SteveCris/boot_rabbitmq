@@ -1,5 +1,6 @@
 package com.ouyue.xiwennews.service;
 
+import com.ouyue.xiwennews.common.dto.PushEvent;
 import com.ouyue.xiwennews.common.vo.UserLikeDetailV;
 
 /**
@@ -11,5 +12,7 @@ import com.ouyue.xiwennews.common.vo.UserLikeDetailV;
 public interface UserLikeService {
     UserLikeDetailV getUserLikeDetail(Integer id);
 
-    void cancelLike(Integer id);
+    void cancelLike(String id);
+
+    boolean processPushTime(String pushEvent);
 }

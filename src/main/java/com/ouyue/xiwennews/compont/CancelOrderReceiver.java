@@ -18,7 +18,7 @@ public class CancelOrderReceiver {
     @Autowired
     private UserLikeService userLikeService;
     @RabbitHandler
-    public void handle(Integer msg){
+    public void handle(String msg){
 
         LOGGER.info("receive delay message id:{}",msg);
         System.out.println(msg);

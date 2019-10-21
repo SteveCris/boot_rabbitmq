@@ -1,5 +1,7 @@
 package com.ouyue.xiwennews.controller;
+import com.alibaba.fastjson.JSON;
 import com.ouyue.xiwennews.common.base.BaseResponse;
+import com.ouyue.xiwennews.common.model.MqDto;
 import com.ouyue.xiwennews.service.RabbitMQSenderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,6 +42,7 @@ public class RabbitMQController {
             String routingKey,
             @RequestParam(required=true) String msg)throws Exception{
         BaseResponse response =new BaseResponse();
+       // MqDto mqDto = JSON.parseObject(msg, MqDto.class);
         rabbitMQSenderService.send(virtualHost, exchange, routingKey, msg);
         logger.info("[发送消息成功], [virtualHost = "+virtualHost+"],[exchange="+exchange+"][routingKey="+routingKey+"][msg="+msg+"]");
         return response;
