@@ -4,29 +4,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserLikeExample {
+public class UserLikeStatExample {
     /**
-     * user_like
+     * user_like_stat
      */
     protected String orderByClause;
 
     /**
-     * user_like
+     * user_like_stat
      */
     protected boolean distinct;
 
     /**
-     * user_like
+     * user_like_stat
      */
     protected List<Criteria> oredCriteria;
 
     /**
-     * user_like
+     * user_like_stat
      */
     protected int limitStart = -1;
 
     /**
-     * user_like
+     * user_like_stat
      */
     protected int limitEnd = -1;
 
@@ -34,7 +34,7 @@ public class UserLikeExample {
      *
      * @mbggenerated 2019-10-22
      */
-    public UserLikeExample() {
+    public UserLikeStatExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -160,7 +160,7 @@ public class UserLikeExample {
     }
 
     /**
-     * user_like 2019-10-22
+     * user_like_stat 2019-10-22
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -263,66 +263,6 @@ public class UserLikeExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdEqualTo(Long value) {
-            addCriterion("user_id =", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotEqualTo(Long value) {
-            addCriterion("user_id <>", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdGreaterThan(Long value) {
-            addCriterion("user_id >", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("user_id >=", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdLessThan(Long value) {
-            addCriterion("user_id <", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("user_id <=", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIn(List<Long> values) {
-            addCriterion("user_id in", values, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotIn(List<Long> values) {
-            addCriterion("user_id not in", values, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdBetween(Long value1, Long value2) {
-            addCriterion("user_id between", value1, value2, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
-            return (Criteria) this;
-        }
-
         public Criteria andLikedIdIsNull() {
             addCriterion("liked_id is null");
             return (Criteria) this;
@@ -393,183 +333,63 @@ public class UserLikeExample {
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusIsNull() {
-            addCriterion("liked_status is null");
+        public Criteria andLikedCountIsNull() {
+            addCriterion("liked_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusIsNotNull() {
-            addCriterion("liked_status is not null");
+        public Criteria andLikedCountIsNotNull() {
+            addCriterion("liked_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusEqualTo(Integer value) {
-            addCriterion("liked_status =", value, "likedStatus");
+        public Criteria andLikedCountEqualTo(Integer value) {
+            addCriterion("liked_count =", value, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusNotEqualTo(Integer value) {
-            addCriterion("liked_status <>", value, "likedStatus");
+        public Criteria andLikedCountNotEqualTo(Integer value) {
+            addCriterion("liked_count <>", value, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusGreaterThan(Integer value) {
-            addCriterion("liked_status >", value, "likedStatus");
+        public Criteria andLikedCountGreaterThan(Integer value) {
+            addCriterion("liked_count >", value, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("liked_status >=", value, "likedStatus");
+        public Criteria andLikedCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("liked_count >=", value, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusLessThan(Integer value) {
-            addCriterion("liked_status <", value, "likedStatus");
+        public Criteria andLikedCountLessThan(Integer value) {
+            addCriterion("liked_count <", value, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("liked_status <=", value, "likedStatus");
+        public Criteria andLikedCountLessThanOrEqualTo(Integer value) {
+            addCriterion("liked_count <=", value, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusIn(List<Integer> values) {
-            addCriterion("liked_status in", values, "likedStatus");
+        public Criteria andLikedCountIn(List<Integer> values) {
+            addCriterion("liked_count in", values, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusNotIn(List<Integer> values) {
-            addCriterion("liked_status not in", values, "likedStatus");
+        public Criteria andLikedCountNotIn(List<Integer> values) {
+            addCriterion("liked_count not in", values, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusBetween(Integer value1, Integer value2) {
-            addCriterion("liked_status between", value1, value2, "likedStatus");
+        public Criteria andLikedCountBetween(Integer value1, Integer value2) {
+            addCriterion("liked_count between", value1, value2, "likedCount");
             return (Criteria) this;
         }
 
-        public Criteria andLikedStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("liked_status not between", value1, value2, "likedStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeIsNull() {
-            addCriterion("liked_type is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeIsNotNull() {
-            addCriterion("liked_type is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeEqualTo(Integer value) {
-            addCriterion("liked_type =", value, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeNotEqualTo(Integer value) {
-            addCriterion("liked_type <>", value, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeGreaterThan(Integer value) {
-            addCriterion("liked_type >", value, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("liked_type >=", value, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeLessThan(Integer value) {
-            addCriterion("liked_type <", value, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("liked_type <=", value, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeIn(List<Integer> values) {
-            addCriterion("liked_type in", values, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeNotIn(List<Integer> values) {
-            addCriterion("liked_type not in", values, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeBetween(Integer value1, Integer value2) {
-            addCriterion("liked_type between", value1, value2, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("liked_type not between", value1, value2, "likedType");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeIsNull() {
-            addCriterion("liked_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeIsNotNull() {
-            addCriterion("liked_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeEqualTo(Date value) {
-            addCriterion("liked_time =", value, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeNotEqualTo(Date value) {
-            addCriterion("liked_time <>", value, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeGreaterThan(Date value) {
-            addCriterion("liked_time >", value, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("liked_time >=", value, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeLessThan(Date value) {
-            addCriterion("liked_time <", value, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeLessThanOrEqualTo(Date value) {
-            addCriterion("liked_time <=", value, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeIn(List<Date> values) {
-            addCriterion("liked_time in", values, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeNotIn(List<Date> values) {
-            addCriterion("liked_time not in", values, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeBetween(Date value1, Date value2) {
-            addCriterion("liked_time between", value1, value2, "likedTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andLikedTimeNotBetween(Date value1, Date value2) {
-            addCriterion("liked_time not between", value1, value2, "likedTime");
+        public Criteria andLikedCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("liked_count not between", value1, value2, "likedCount");
             return (Criteria) this;
         }
 
@@ -755,7 +575,7 @@ public class UserLikeExample {
     }
 
     /**
-     * user_like
+     * user_like_stat
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -765,7 +585,7 @@ public class UserLikeExample {
     }
 
     /**
-     * user_like 2019-10-22
+     * user_like_stat 2019-10-22
      */
     public static class Criterion {
         private String condition;

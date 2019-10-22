@@ -1,5 +1,6 @@
 package com.ouyue.xiwennews.controller;
 import com.ouyue.xiwennews.common.base.BaseResponse;
+import com.ouyue.xiwennews.common.model.UserLikeF;
 import com.ouyue.xiwennews.common.vo.UserLikeDetailV;
 import com.ouyue.xiwennews.compont.CancelOrderSender;
 import com.ouyue.xiwennews.service.UserLikeService;
@@ -9,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +35,7 @@ public class UserLikeController {
 
 
 
-	@ApiOperation(value = "信息")
+	@ApiOperation(value = "获取用户点赞详情")
 	@ResponseBody
 	@RequestMapping(value = "/getUserLikeDto", method = RequestMethod.GET)
 	public BaseResponse<UserLikeDetailV> insertDto(@RequestParam String id) {
@@ -42,5 +45,16 @@ public class UserLikeController {
 	 	cancelOrderSender.sendMessage(id,50000);
 		return response;
 	}
+
+
+	@ApiOperation(value = "新增")
+	@ResponseBody
+	@RequestMapping(value = "/saveUserLikeDto", method = RequestMethod.POST)
+	public BaseResponse<?> insertDto(@RequestBody @Valid UserLikeF request) {
+		BaseResponse response = new BaseResponse();
+		int num=userLikeService.insertDto(request);
+		return response;
+	}
+
 
 }

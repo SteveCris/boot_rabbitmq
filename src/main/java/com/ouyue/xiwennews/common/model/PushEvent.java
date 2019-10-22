@@ -1,4 +1,4 @@
-package com.ouyue.xiwennews.common.dto;
+package com.ouyue.xiwennews.common.model;
 
 import java.io.Serializable;
 

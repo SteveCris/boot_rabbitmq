@@ -1,21 +1,20 @@
 package com.ouyue.xiwennews.common.enums;
 
-
-import lombok.Getter;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public enum LikedStatusEnum {
-    LIKE(1, "点赞"),
-    UNLIKE(0, "取消点赞/未点赞"),
-    ;
-   public static  final Map<Integer,LikedStatusEnum> map =new HashMap<>();
+public enum LikeTypeEnum {
+
+    DEFAULT(0,"默认值"),
+
+    LIKE_CASE(1,"点赞案例");
+
+    public static  final Map<Integer,LikeTypeEnum> map =new HashMap<>();
     private Integer code;
 
     private String msg;
 
-    LikedStatusEnum(Integer code, String msg) {
+    LikeTypeEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
@@ -29,11 +28,11 @@ public enum LikedStatusEnum {
     }
 
     static {
-        for (LikedStatusEnum likedStatusEnum:LikedStatusEnum.values()){
+        for (LikeTypeEnum likedStatusEnum:LikeTypeEnum.values()){
             map.put(likedStatusEnum.getCode(),likedStatusEnum);
         }
     }
-    public static LikedStatusEnum getCode(int code){
+    public static LikeTypeEnum getCode(int code){
         return map.get(code);
     }
 }

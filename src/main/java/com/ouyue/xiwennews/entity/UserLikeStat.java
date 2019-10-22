@@ -2,36 +2,21 @@ package com.ouyue.xiwennews.entity;
 
 import java.util.Date;
 
-public class UserLike {
+public class UserLikeStat {
     /**
      * id
      */
     private Long id;
 
     /**
-     * 用户id
-     */
-    private Long userId;
-
-    /**
-     * 被点赞的id
+     * 被点赞id
      */
     private String likedId;
 
     /**
-     * 点赞状态，0未点赞，1已点赞
+     * 点赞总数量
      */
-    private Integer likedStatus;
-
-    /**
-     * 点赞的类型
-     */
-    private Integer likedType;
-
-    /**
-     * 点赞时间
-     */
-    private Date likedTime;
+    private Integer likedCount;
 
     /**
      * 是否逻辑删除
@@ -65,83 +50,35 @@ public class UserLike {
     }
 
     /**
-     * 用户id
-     * @return user_id 用户id
-     */
-    public Long getUserId() {
-        return userId;
-    }
-
-    /**
-     * 用户id
-     * @param userId 用户id
-     */
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    /**
-     * 被点赞的id
-     * @return liked_id 被点赞的id
+     * 被点赞id
+     * @return liked_id 被点赞id
      */
     public String getLikedId() {
         return likedId;
     }
 
     /**
-     * 被点赞的id
-     * @param likedId 被点赞的id
+     * 被点赞id
+     * @param likedId 被点赞id
      */
     public void setLikedId(String likedId) {
         this.likedId = likedId;
     }
 
     /**
-     * 点赞状态，0未点赞，1已点赞
-     * @return liked_status 点赞状态，0未点赞，1已点赞
+     * 点赞总数量
+     * @return liked_count 点赞总数量
      */
-    public Integer getLikedStatus() {
-        return likedStatus;
+    public Integer getLikedCount() {
+        return likedCount;
     }
 
     /**
-     * 点赞状态，0未点赞，1已点赞
-     * @param likedStatus 点赞状态，0未点赞，1已点赞
+     * 点赞总数量
+     * @param likedCount 点赞总数量
      */
-    public void setLikedStatus(Integer likedStatus) {
-        this.likedStatus = likedStatus;
-    }
-
-    /**
-     * 点赞的类型
-     * @return liked_type 点赞的类型
-     */
-    public Integer getLikedType() {
-        return likedType;
-    }
-
-    /**
-     * 点赞的类型
-     * @param likedType 点赞的类型
-     */
-    public void setLikedType(Integer likedType) {
-        this.likedType = likedType;
-    }
-
-    /**
-     * 点赞时间
-     * @return liked_time 点赞时间
-     */
-    public Date getLikedTime() {
-        return likedTime;
-    }
-
-    /**
-     * 点赞时间
-     * @param likedTime 点赞时间
-     */
-    public void setLikedTime(Date likedTime) {
-        this.likedTime = likedTime;
+    public void setLikedCount(Integer likedCount) {
+        this.likedCount = likedCount;
     }
 
     /**

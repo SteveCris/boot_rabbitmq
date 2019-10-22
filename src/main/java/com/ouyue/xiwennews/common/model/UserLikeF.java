@@ -1,21 +1,18 @@
-package com.ouyue.xiwennews.common.vo;
+package com.ouyue.xiwennews.common.model;
 
 import lombok.Data;
-
-import java.io.Serializable;
-import java.util.Date;
+import lombok.ToString;
 
 /**
  * @author :tongjingji01@gmail.com
  * @program:xiwen-news
  * @description:
- * @create:2019-10-18 13-36
+ * @create:2019-10-22 09-35
  */
 
 @Data
-public class UserLikeDetailV implements Serializable {
-    private Integer id;
-
+@ToString
+public class UserLikeF {
     /**
      * 被点赞的用户id
      */
@@ -30,14 +27,4 @@ public class UserLikeDetailV implements Serializable {
      * 点赞状态，0取消，1点赞
      */
     private byte status;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 修改时间
-     */
-    private Date updateTime;
 }

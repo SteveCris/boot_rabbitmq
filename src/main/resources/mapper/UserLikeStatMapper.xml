@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ouyue.xiwennews.mapper.UserLikeMapper" >
-  <resultMap id="BaseResultMap" type="com.ouyue.xiwennews.entity.UserLike" >
+<mapper namespace="com.ouyue.xiwennews.mapper.UserLikeStatMapper" >
+  <resultMap id="BaseResultMap" type="com.ouyue.xiwennews.entity.UserLikeStat" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="liked_id" property="likedId" jdbcType="VARCHAR" />
-    <result column="liked_status" property="likedStatus" jdbcType="INTEGER" />
-    <result column="liked_type" property="likedType" jdbcType="INTEGER" />
-    <result column="liked_time" property="likedTime" jdbcType="TIMESTAMP" />
+    <result column="liked_count" property="likedCount" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
@@ -71,17 +68,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, liked_id, liked_status, liked_type, liked_time, is_delete, create_time, 
-    update_time
+    id, liked_id, liked_count, is_delete, create_time, update_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ouyue.xiwennews.entity.UserLikeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ouyue.xiwennews.entity.UserLikeStatExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from user_like
+    from user_like_stat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -95,47 +91,36 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from user_like
+    from user_like_stat
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from user_like
+    delete from user_like_stat
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.ouyue.xiwennews.entity.UserLikeExample" >
-    delete from user_like
+  <delete id="deleteByExample" parameterType="com.ouyue.xiwennews.entity.UserLikeStatExample" >
+    delete from user_like_stat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ouyue.xiwennews.entity.UserLike" >
-    insert into user_like ( user_id, liked_id,
-      liked_status, liked_type, liked_time, 
+  <insert id="insert" parameterType="com.ouyue.xiwennews.entity.UserLikeStat" >
+    insert into user_like_stat ( liked_id, liked_count,
       is_delete, create_time, update_time
       )
-    values (#{userId,jdbcType=BIGINT}, #{likedId,jdbcType=VARCHAR},
-      #{likedStatus,jdbcType=INTEGER}, #{likedType,jdbcType=INTEGER}, #{likedTime,jdbcType=TIMESTAMP}, 
+    values ( #{likedId,jdbcType=VARCHAR}, #{likedCount,jdbcType=INTEGER},
       #{isDelete,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.ouyue.xiwennews.entity.UserLike" >
-    insert into user_like
+  <insert id="insertSelective" parameterType="com.ouyue.xiwennews.entity.UserLikeStat" >
+    insert into user_like_stat
     <trim prefix="(" suffix=")" suffixOverrides="," >
 
-      <if test="userId != null" >
-        user_id,
-      </if>
       <if test="likedId != null" >
         liked_id,
       </if>
-      <if test="likedStatus != null" >
-        liked_status,
-      </if>
-      <if test="likedType != null" >
-        liked_type,
-      </if>
-      <if test="likedTime != null" >
-        liked_time,
+      <if test="likedCount != null" >
+        liked_count,
       </if>
       <if test="isDelete != null" >
         is_delete,
@@ -149,20 +134,11 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
 
-      <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
-      </if>
       <if test="likedId != null" >
         #{likedId,jdbcType=VARCHAR},
       </if>
-      <if test="likedStatus != null" >
-        #{likedStatus,jdbcType=INTEGER},
-      </if>
-      <if test="likedType != null" >
-        #{likedType,jdbcType=INTEGER},
-      </if>
-      <if test="likedTime != null" >
-        #{likedTime,jdbcType=TIMESTAMP},
+      <if test="likedCount != null" >
+        #{likedCount,jdbcType=INTEGER},
       </if>
       <if test="isDelete != null" >
         #{isDelete,jdbcType=TINYINT},
@@ -175,32 +151,23 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.ouyue.xiwennews.entity.UserLikeExample" resultType="java.lang.Integer" >
-    select count(*) from user_like
+  <select id="countByExample" parameterType="com.ouyue.xiwennews.entity.UserLikeStatExample" resultType="java.lang.Integer" >
+    select count(*) from user_like_stat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update user_like
+    update user_like_stat
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
-      </if>
       <if test="record.likedId != null" >
         liked_id = #{record.likedId,jdbcType=VARCHAR},
       </if>
-      <if test="record.likedStatus != null" >
-        liked_status = #{record.likedStatus,jdbcType=INTEGER},
-      </if>
-      <if test="record.likedType != null" >
-        liked_type = #{record.likedType,jdbcType=INTEGER},
-      </if>
-      <if test="record.likedTime != null" >
-        liked_time = #{record.likedTime,jdbcType=TIMESTAMP},
+      <if test="record.likedCount != null" >
+        liked_count = #{record.likedCount,jdbcType=INTEGER},
       </if>
       <if test="record.isDelete != null" >
         is_delete = #{record.isDelete,jdbcType=TINYINT},
@@ -217,13 +184,10 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update user_like
+    update user_like_stat
     set id = #{record.id,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
       liked_id = #{record.likedId,jdbcType=VARCHAR},
-      liked_status = #{record.likedStatus,jdbcType=INTEGER},
-      liked_type = #{record.likedType,jdbcType=INTEGER},
-      liked_time = #{record.likedTime,jdbcType=TIMESTAMP},
+      liked_count = #{record.likedCount,jdbcType=INTEGER},
       is_delete = #{record.isDelete,jdbcType=TINYINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
@@ -231,23 +195,14 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ouyue.xiwennews.entity.UserLike" >
-    update user_like
+  <update id="updateByPrimaryKeySelective" parameterType="com.ouyue.xiwennews.entity.UserLikeStat" >
+    update user_like_stat
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
       <if test="likedId != null" >
         liked_id = #{likedId,jdbcType=VARCHAR},
       </if>
-      <if test="likedStatus != null" >
-        liked_status = #{likedStatus,jdbcType=INTEGER},
-      </if>
-      <if test="likedType != null" >
-        liked_type = #{likedType,jdbcType=INTEGER},
-      </if>
-      <if test="likedTime != null" >
-        liked_time = #{likedTime,jdbcType=TIMESTAMP},
+      <if test="likedCount != null" >
+        liked_count = #{likedCount,jdbcType=INTEGER},
       </if>
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=TINYINT},
@@ -261,13 +216,10 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ouyue.xiwennews.entity.UserLike" >
-    update user_like
-    set user_id = #{userId,jdbcType=BIGINT},
-      liked_id = #{likedId,jdbcType=VARCHAR},
-      liked_status = #{likedStatus,jdbcType=INTEGER},
-      liked_type = #{likedType,jdbcType=INTEGER},
-      liked_time = #{likedTime,jdbcType=TIMESTAMP},
+  <update id="updateByPrimaryKey" parameterType="com.ouyue.xiwennews.entity.UserLikeStat" >
+    update user_like_stat
+    set liked_id = #{likedId,jdbcType=VARCHAR},
+      liked_count = #{likedCount,jdbcType=INTEGER},
       is_delete = #{isDelete,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
